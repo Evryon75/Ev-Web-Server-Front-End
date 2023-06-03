@@ -13,8 +13,10 @@ export class AppComponent {
   brother: Test = {};
   title: string = "brother";
   constructor(public http: HttpClient, private router: Router) {
-    this.http.get<Test>('http://127.0.0.1:448/test').subscribe(d => {
+    this.http.get<Test>('http://127.0.0.1:448/').subscribe(d => {
       this.brother = d;
     });
   }
 }
+
+//todo: ADD THE FUNNY TAGS FOR LANGUAGES ITLL BE SO GOOD ITLL BE SO EASY i think, i hope, god i hope this doesnt take me ages hoyl shit
