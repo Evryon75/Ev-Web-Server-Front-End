@@ -1,5 +1,5 @@
 import {Component, signal} from '@angular/core';
-import {Test} from "./models.module";
+import {LanguageTags, Repo} from "./models.module";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 
@@ -10,10 +10,11 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   // @ts-ignore
-  brother: Test = {};
-  title: string = "brother";
+  brother: Repo[] = [];
+  title: string = "Ev Server Front End";
+  tags: LanguageTags[] = [];
   constructor(public http: HttpClient, private router: Router) {
-    this.http.get<Test>('http://127.0.0.1:448/').subscribe(d => {
+    this.http.get<Repo[]>('http://127.0.0.1:448/').subscribe(d => {
       this.brother = d;
     });
   }
