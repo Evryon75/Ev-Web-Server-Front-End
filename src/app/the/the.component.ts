@@ -13,7 +13,7 @@ export class TheComponent {
   brother: Repo[] = [];
   title: string = "Ev Server Front End";
   tags: LanguageTags[] = [];
-  constructor(public http: HttpClient, private router: Router) {
+  constructor(public http: HttpClient) {
     this.http.get<Repo[]>('http://127.0.0.1:448/').subscribe(d => {
       this.brother = d;
     });
