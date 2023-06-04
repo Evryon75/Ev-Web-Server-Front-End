@@ -1,43 +1,29 @@
 <h2>Ev's Repositories</h2>
-
-<div style="text-align: center; display: inline">
-  <h3>Language tags</h3>
-  <button>
-    Rust
-  </button>
-  <button>
-    Java
-  </button>
-  <button>
-    Python
-  </button>
-  <button>
-    Css
-  </button>
-  <button>
-    Html
-  </button>
-  <button>
-    C++
-  </button>
-  <button>
-    C
-  </button>
-  <button>
-    C#
-  </button>
-  <button>
-    Ev
-  </button>
-  <button>
-    Markdown
-  </button>
+<h3>Search</h3>
+<div style="display: flex; text-align: center">
+  <input type="text" #searchName>
+  <button (click)="goLang(searchName.value)">Search</button>
 </div>
 
-<hr style="border-color: gray">
+<h3>Language tags</h3>
+<div style="text-align: center; display: inline"
+     *ngFor="let a of ['Rust', 'Java', 'Python', 'CSS', 'HTML', 'CPP', 'C', 'CSHARP', 'Ev', 'Markdown']">
+
+  <button (click)="toggleTag(parseTag(a))">{{a == "CSHARP" ? "C#" : a == "CPP" ? "C++" : a}}</button>
+
+</div>
+<h3 *ngIf="tags.length > 0">Current filters:
+  <p style="display: inline; text-align: center" *ngFor="let b of tags">
+    {{b + (tags.indexOf(b) != tags.length - 1 ? "," : "").toString()}}
+  </p> </h3>
+
+<hr style="border-color: gray; width: 90%; margin-left: -1%">
 
 <div *ngFor="let bro of brother" style="text-align: center; display: inline">
-  <button style="height: 80px; width: 29%; font-size: 15px; border: 2px solid #7289da">
+  <button *ngIf="tags.length == 0" style="height: 80px; width: 29%; font-size: 15px; border: 2px solid #7289da">
+    {{bro.name}}
+  </button>
+  <button *ngIf="tags.length > 0 && tags.includes(parseTag(bro.language))" style="height: 80px; width: 29%; font-size: 15px; border: 2px solid #7289da">
     {{bro.name}}
   </button>
 </div>
